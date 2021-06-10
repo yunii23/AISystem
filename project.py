@@ -19,13 +19,24 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
         
 dataset = pd.read_csv("C:/Users/dsu/Documents/spyder_test1/winequality-red.csv")
-print(dataset.head())
+#print(dataset.head())
 
-print(dataset.shape)
+#print(dataset.shape)
 
-print(dataset.describe())
+#print(dataset.describe())
 
-print(dataset.info())
+#print(dataset.info())
+
+dataset['quality'] = np.where(dataset['quality'] > 6, 1, 0)
+dataset['quality'].value_counts()
+
+X = dataset.iloc[:, 0:-1].values
+y = dataset.iloc[:, -1].values
+
+print(X)
+print(y)
+print(X.shape)
+print(y.shape)
 
 
 
